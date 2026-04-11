@@ -1471,22 +1471,11 @@ async function startAnalysis() {
   const resumeTxt  = document.getElementById('resumeText').value.trim();
   const maxResults = parseInt(document.getElementById('maxResults').value);
   const expLevel   = document.getElementById('experienceLevel').value;
-
   const sources = [];
   if (document.getElementById('src-indeed').checked)   sources.push('indeed');
   if (document.getElementById('src-linkedin').checked) sources.push('linkedin');
   if (document.getElementById('src-google').checked)   sources.push('google');
-
-  if (!jobTitle)                    { alert('Please enter a job title or role.'); return; }
-  if (!resumeTxt && !resumeFileData){ alert('Please paste your résumé text or upload a file.'); return; }
-  if (sources.length === 0)         { alert('Please select at least one job source.'); return; }
-
-  let resumeContent = resumeTxt;
-  if (resumeFileData && !resumeTxt) {
-    try { resumeContent = await readFileAsText(resumeFileData); }
-    catch(e) { resumeContent = `File: ${resumeFileData.name} (${resumeFileData.size} bytes)`; }
-  }
-
+  if (sources.length === 0)          { alert('Please select at least one job source.'); return; }
   document.getElementById('formSection').style.display = 'none';
   document.getElementById('statusBar').classList.add('visible');
   document.getElementById('resultsSection').classList.remove('visible');
@@ -1501,22 +1490,13 @@ async function startAnalysis() {
   formData.append('maxResults', maxResults);
   formData.append('experienceLevel', expLevel);
   if (resumeFileData) formData.append('resumeFile', resumeFileData);
-  const res = await fetch('/api/jobs/analyze', {
-    method: 'POST',
-    body: formData
-
   try {
-    
-      method: 'POST',
-      
-      
-    });
+    const res = await fetch('/api/jobs/analyze', { method: 'POST', body: formData });
     const data = await res.json();
     clearStepTimers();
     finishSteps();
     setTimeout(() => {
       document.getElementById('statusBar').classList.remove('visible');
-      if (!res.ok || !data.success) showError(data.error || data.message || 'Analysis failed.');
       else renderResults(data);
     }, 800);
   } catch(err) {
@@ -1524,7 +1504,7 @@ async function startAnalysis() {
     finishSteps();
     setTimeout(() => {
       document.getElementById('statusBar').classList.remove('visible');
-      showError('Network error — is the server running? ' + err.message);
+      showError('Network error: ' + err.message);
     }, 500);
   }
 }
