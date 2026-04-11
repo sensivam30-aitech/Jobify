@@ -14,7 +14,11 @@ app.use(cors());
 app.use(express.json());
 
 // Serve frontend from /public
-app.use(express.static(path.join(__dirname, "public")));
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval';");
+  next();
+});
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
