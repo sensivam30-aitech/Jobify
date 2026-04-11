@@ -5,7 +5,12 @@
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 [![Framework: Express](https://img.shields.io/badge/Framework-Express.js-000000?logo=express&logoColor=white)](https://expressjs.com/)
 
-> **The next-generation intelligence platform for Career matching**
+> **The next-generation intelligence platform for Career matching, Market research, and Strategic planning.**
+
+## 📽 Demo Overview
+![Jobify Demo](demo.webp)
+
+---
 
 Jobify is a high-end automation suite that bridges the gap between raw web data and actionable insights. By orchestrating distributed cloud scrapers via **Apify** and performing deep-reasoning synthesis through **Anthropic’s Claude LLM**, Jobify provides users with professional-grade reports in seconds.
 
