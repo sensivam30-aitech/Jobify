@@ -8,7 +8,18 @@
 > **The next-generation intelligence platform for Career matching, Market research, and Strategic planning.**
 
 ## 📽 Demo Overview
-![Jobify Demo](demo.webp)
+
+> **Live Platform**: Run locally at `http://localhost:3000` after setup (see below).
+
+### Application Flow
+
+| Step | Action | Result |
+|:---:|:---|:---|
+| 1️⃣ | Upload or paste your résumé | AI parses your skills & experience |
+| 2️⃣ | Set job title, location, sources | Apify scrapes Indeed & LinkedIn live |
+| 3️⃣ | Click **⚡ ANALYZE JOBS** | Claude AI ranks every match 0–100% |
+| 4️⃣ | View ranked results table | Skill gaps, matched skills, salary ranges |
+| 5️⃣ | Click **↗ OPEN REPORT** | Full HTML report with all insights |
 
 ---
 
