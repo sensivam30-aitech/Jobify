@@ -11,7 +11,7 @@
 
 > 🎬 **Watch the full walkthrough of the Jobify platform — from résumé upload to AI-ranked job matches and report generation.**
 
-https://github.com/user-attachments/assets/ADD-YOUR-VIDEO-LINK-HERE
+https://github.com/user-attachments/assets/https://globalknowledgetechnologies-my.sharepoint.com/:v:/g/personal/gobinath_m_gktech_ai/IQCPU8LIfqN7RIAQ7A7TJqTlAVOPmPf8y7wUNF7DVrxR-iM?e=R7wKvc
 
 > **Note**: To view the demo, upload `jobifyDemo.mp4` via the GitHub web editor (drag & drop into the README editor) and replace the link above with the generated URL.
 
