@@ -1402,198 +1402,100 @@
 </footer>
 
 <script>
-// ─── TOGGLES ──────────────────────────────────────────────────────
-function updateToggle(src) {
-  const cb = document.getElementById('src-' + src);
-  document.getElementById('toggle-' + src).classList.toggle('active', cb.checked);
-}
-
-// ─── FILE UPLOAD ──────────────────────────────────────────────────
-const uploadZone = document.getElementById('uploadZone');
-uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
-uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
-uploadZone.addEventListener('drop', e => {
-  e.preventDefault();
-  uploadZone.classList.remove('dragover');
-  const file = e.dataTransfer.files[0];
-  if (file) setFile(file);
-});
-
-let resumeFileData = null;
-function handleFileSelect(input) { if (input.files[0]) setFile(input.files[0]); }
-function setFile(file) {
-  console.log("File selected:", file.name, file.size);
-  resumeFileData = file;
-  document.getElementById('uploadedName').textContent = file.name;
-  document.getElementById('uploadFilename').classList.add('visible');
-}
-
-// ─── STEP ANIMATION ───────────────────────────────────────────────
-let stepTimers = [];
-function animateSteps(durationMs) {
-  const steps = ['step1','step2','step3','step4','step5'];
-  const interval = durationMs / steps.length;
-  steps.forEach((id, i) => {
-    const t = setTimeout(() => {
-      if (i > 0) {
-        document.getElementById(steps[i-1]).classList.remove('active');
-        document.getElementById(steps[i-1]).classList.add('done');
-      }
-      document.getElementById(id).classList.add('active');
-    }, i * interval);
-    stepTimers.push(t);
-  });
-}
-function clearStepTimers() { stepTimers.forEach(clearTimeout); stepTimers = []; }
-function finishSteps() {
-  ['step1','step2','step3','step4','step5'].forEach(id => {
-    document.getElementById(id).classList.remove('active');
-    document.getElementById(id).classList.add('done');
-  });
-  document.getElementById('spinner').style.display = 'none';
-}
-function resetSteps() {
-  ['step1','step2','step3','step4','step5'].forEach(id => {
-    document.getElementById(id).classList.remove('active','done');
-  });
-  document.getElementById('spinner').style.display = '';
-}
-
-// ─── ANALYSIS ─────────────────────────────────────────────────────
-async function startAnalysis() {
-  const jobTitle   = document.getElementById('jobTitle').value.trim();
-  const location   = document.getElementById('location').value.trim();
-  const skills     = document.getElementById('skills').value.trim();
-  const resumeTxt  = document.getElementById('resumeText').value.trim();
-  const maxResults = parseInt(document.getElementById('maxResults').value);
-  const expLevel   = document.getElementById('experienceLevel').value;
-  const sources = [];
-  if (document.getElementById('src-indeed').checked)   sources.push('indeed');
-  if (document.getElementById('src-linkedin').checked) sources.push('linkedin');
-  if (document.getElementById('src-google').checked)   sources.push('google');
-  if (sources.length === 0)          { alert('Please select at least one job source.'); return; }
-  document.getElementById('formSection').style.display = 'none';
+function updateToggle(src){const cb=document.getElementById('src-'+src);document.getElementById('toggle-'+src).classList.toggle('active',cb.checked);}
+let resumeFileData=null;
+function handleFileSelect(input){if(input.files[0])setFile(input.files[0]);}
+function setFile(file){resumeFileData=file;const el=document.getElementById('uploadedName');if(el){el.textContent=file.name;el.parentElement.style.display='block';}}
+let stepTimers=[];
+function animateSteps(ms){const steps=['step1','step2','step3','step4','step5'];steps.forEach((id,i)=>{const t=setTimeout(()=>{if(i>0){document.getElementById(steps[i-1]).classList.remove('active');document.getElementById(steps[i-1]).classList.add('done');}document.getElementById(id).classList.add('active');},i*ms/steps.length);stepTimers.push(t);});}
+function clearStepTimers(){stepTimers.forEach(clearTimeout);stepTimers=[];}
+function finishSteps(){['step1','step2','step3','step4','step5'].forEach(id=>{document.getElementById(id).classList.remove('active');document.getElementById(id).classList.add('done');});document.getElementById('spinner').style.display='none';}
+function resetSteps(){['step1','step2','step3','step4','step5'].forEach(id=>document.getElementById(id).classList.remove('active','done'));document.getElementById('spinner').style.display='';}
+async function startAnalysis(){
+  const jobTitle=document.getElementById('jobTitle').value.trim();
+  const location=document.getElementById('location').value.trim();
+  const skills=document.getElementById('skills').value.trim();
+  const resumeTxt=document.getElementById('resumeText').value.trim();
+  const maxResults=parseInt(document.getElementById('maxResults').value);
+  const expLevel=document.getElementById('experienceLevel').value;
+  const sources=[];
+  if(document.getElementById('src-indeed').checked)sources.push('indeed');
+  if(document.getElementById('src-linkedin').checked)sources.push('linkedin');
+  if(document.getElementById('src-google').checked)sources.push('google');
+  if(!jobTitle){alert('Please enter a job title.');return;}
+  if(!resumeTxt&&!resumeFileData){alert('Please paste your resume or upload a file.');return;}
+  if(sources.length===0){alert('Please select at least one job source.');return;}
+  document.getElementById('formSection').style.display='none';
   document.getElementById('statusBar').classList.add('visible');
   document.getElementById('resultsSection').classList.remove('visible');
   document.getElementById('errorCard').classList.remove('visible');
   resetSteps();
   animateSteps(45000);
-  const formData = new FormData();
-  formData.append('jobTitle', jobTitle);
-  formData.append('location', location);
-  formData.append('skills', skills);
-  formData.append('resume', resumeTxt);
-  formData.append('maxResults', maxResults);
-  formData.append('experienceLevel', expLevel);
-  if (resumeFileData) formData.append('resumeFile', resumeFileData);
-  try {
-    const res = await fetch('/api/jobs/analyze', { method: 'POST', body: formData });
-    const data = await res.json();
+  const formData=new FormData();
+  formData.append('jobTitle',jobTitle);
+  formData.append('location',location);
+  formData.append('skills',skills);
+  formData.append('resume',resumeTxt);
+  formData.append('maxResults',maxResults);
+  formData.append('experienceLevel',expLevel);
+  if(resumeFileData)formData.append('resumeFile',resumeFileData);
+  try{
+    const res=await fetch('/api/jobs/analyze',{method:'POST',body:formData});
+    const data=await res.json();
     clearStepTimers();
     finishSteps();
-    setTimeout(() => {
+    setTimeout(()=>{
       document.getElementById('statusBar').classList.remove('visible');
+      if(!res.ok||!data.success)showError(data.error||data.message||'Analysis failed.');
       else renderResults(data);
-    }, 800);
-  } catch(err) {
+    },800);
+  }catch(err){
     clearStepTimers();
     finishSteps();
-    setTimeout(() => {
+    setTimeout(()=>{
       document.getElementById('statusBar').classList.remove('visible');
-      showError('Network error: ' + err.message);
-    }, 500);
+      showError('Network error: '+err.message);
+    },500);
   }
 }
-
-function readFileAsText(file) {
-  return new Promise((resolve, reject) => {
-    const r = new FileReader();
-    r.onload = e => resolve(e.target.result);
-    r.onerror = reject;
-    r.readAsText(file);
+function showError(msg){document.getElementById('errorMsg').textContent=msg;document.getElementById('errorCard').classList.add('visible');document.getElementById('formSection').style.display='';}
+function resetForm(){document.getElementById('resultsSection').classList.remove('visible');document.getElementById('errorCard').classList.remove('visible');document.getElementById('formSection').style.display='';window.scrollTo({top:0,behavior:'smooth'});}
+function renderResults(data){
+  const analysis=data.analysis||{};
+  const matches=analysis.matches||[];
+  const scraped=data.totalScraped||matches.length;
+  const topScore=matches.length>0?(matches[0].matchPercentage||matches[0].score||0):0;
+  document.getElementById('statScraped').textContent=scraped;
+  document.getElementById('statMatches').textContent=data.relevantCount||matches.length;
+  document.getElementById('statTopScore').textContent=topScore+'%';
+  document.getElementById('statSources').textContent=data.sourcesUsed||1;
+  document.getElementById('matchCount').textContent=matches.length+' jobs';
+  const tbody=document.getElementById('matchesBody');
+  tbody.innerHTML='';
+  matches.forEach((job,i)=>{
+    const pct=job.matchPercentage||job.score||0;
+    const cls=pct>=80?'match-high':pct>=60?'match-med':'match-low';
+    const salary=job.salary||job.salaryRange||'Not listed';
+    const source=(job.source||'indeed').toLowerCase();
+    const url=job.url||job.jobUrl||job.link||'#';
+    const title=job.title||job.jobTitle||'Untitled';
+    const company=job.company||job.companyName||'-';
+    const row=document.createElement('tr');
+    row.onclick=()=>window.open(url,'_blank');
+    row.innerHTML='<td><div class="rank-badge '+(i<3?'top':'')+'">'+(i+1)+'</div></td><td><div class="job-title">'+escHtml(title)+'</div><div class="job-company">'+escHtml(company)+'</div></td><td class="'+cls+'"><div class="match-bar-wrap"><div class="match-bar"><div class="match-bar-fill" style="width:'+pct+'%"></div></div><div class="match-pct">'+pct+'%</div></div></td><td><div class="salary-chip">'+escHtml(salary)+'</div></td><td><span class="source-pill pill-'+source+'">'+source+'</span></td><td><a class="view-btn" href="'+url+'" target="_blank" onclick="event.stopPropagation()">View</a></td>';
+    tbody.appendChild(row);
   });
-}
-
-// ─── RENDER RESULTS ────────────────────────────────────────────────
-function renderResults(data) {
-  const analysis  = data.analysis || {};
-  const matches   = analysis.matches || [];
-  const scraped   = data.totalScraped || data.rawCount || matches.length;
-  const relevant  = data.relevantCount || matches.length;
-  const topScore  = matches.length > 0 ? (matches[0].matchPercentage || matches[0].score || 0) : 0;
-  const sourcesUsed = data.sources || data.sourcesUsed || 1;
-
-  document.getElementById('statScraped').textContent  = scraped;
-  document.getElementById('statMatches').textContent  = relevant;
-  document.getElementById('statTopScore').textContent = topScore + '%';
-  document.getElementById('statSources').textContent  = sourcesUsed;
-  document.getElementById('matchCount').textContent   = matches.length + ' jobs';
-
-  const tbody = document.getElementById('matchesBody');
-  tbody.innerHTML = '';
-  matches.forEach((job, i) => {
-    const pct     = job.matchPercentage || job.score || 0;
-    const cls     = pct >= 80 ? 'match-high' : pct >= 60 ? 'match-med' : 'match-low';
-    const salary  = job.salary || job.salaryRange || 'Not listed';
-    const source  = (job.source || 'indeed').toLowerCase();
-    const url     = job.url || job.jobUrl || job.link || '#';
-    const title   = job.title || job.jobTitle || 'Untitled';
-    const company = job.company || job.companyName || '—';
-    tbody.innerHTML += `
-      <tr onclick="window.open('${url}','_blank')">
-        <td><div class="rank-badge ${i<3?'top':''}">${i+1}</div></td>
-        <td><div class="job-title">${escHtml(title)}</div><div class="job-company">${escHtml(company)}</div></td>
-        <td class="${cls}">
-          <div class="match-bar-wrap">
-            <div class="match-bar"><div class="match-bar-fill" style="width:${pct}%"></div></div>
-            <div class="match-pct">${pct}%</div>
-          </div>
-        </td>
-        <td><div class="salary-chip">${escHtml(salary)}</div></td>
-        <td><span class="source-pill pill-${source}">${source}</span></td>
-        <td><a class="view-btn" href="${url}" target="_blank" onclick="event.stopPropagation()">↗ View</a></td>
-      </tr>`;
-  });
-
-  const gaps = analysis.skillGaps || data.skillGaps || [];
-  document.getElementById('skillGaps').innerHTML =
-    gaps.map(s => `<div class="skill-chip gap-skill">${escHtml(s)}</div>`).join('') ||
-    '<div class="skill-chip" style="color:var(--text3)">None identified</div>';
-
-  const matched = analysis.matchedSkills || analysis.strongSkills || data.matchedSkills || [];
-  document.getElementById('matchedSkills').innerHTML =
-    matched.map(s => `<div class="skill-chip">${escHtml(s)}</div>`).join('') ||
-    '<div class="skill-chip" style="color:var(--text3)">—</div>';
-
-  const rec = analysis.recommendation || data.recommendation || '';
-  document.getElementById('recText').textContent = rec || 'No recommendation generated.';
-
-  if (data.reportPath || data.reportUrl) {
-    document.getElementById('reportLink').href = data.reportUrl || ('/report?path=' + encodeURIComponent(data.reportPath));
-  }
-  document.getElementById('reportMeta').textContent = `HTML · Generated ${new Date().toLocaleString()}`;
-
+  const gaps=analysis.skillGaps||data.skillGaps||[];
+  document.getElementById('skillGaps').innerHTML=gaps.map(s=>'<div class="skill-chip gap-skill">'+escHtml(s)+'</div>').join('')||'<div class="skill-chip">None identified</div>';
+  const matched=analysis.matchedSkills||analysis.strongSkills||[];
+  document.getElementById('matchedSkills').innerHTML=matched.map(s=>'<div class="skill-chip">'+escHtml(s)+'</div>').join('')||'<div class="skill-chip">-</div>';
+  document.getElementById('recText').textContent=analysis.recommendation||data.recommendation||'No recommendation generated.';
+  if(data.reportPath||data.reportUrl)document.getElementById('reportLink').href=data.reportUrl||('/report?path='+encodeURIComponent(data.reportPath));
+  document.getElementById('reportMeta').textContent='HTML - Generated '+new Date().toLocaleString();
   document.getElementById('resultsSection').classList.add('visible');
-  document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'});
 }
-
-function showError(msg) {
-  document.getElementById('errorMsg').textContent = msg;
-  document.getElementById('errorCard').classList.add('visible');
-  document.getElementById('formSection').style.display = '';
-}
-
-function resetForm() {
-  document.getElementById('resultsSection').classList.remove('visible');
-  document.getElementById('errorCard').classList.remove('visible');
-  document.getElementById('formSection').style.display = '';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function escHtml(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+function escHtml(str){if(!str)return'';return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 </script>
 </body>
 </html>
