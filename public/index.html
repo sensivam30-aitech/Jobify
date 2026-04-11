@@ -1493,12 +1493,23 @@ async function startAnalysis() {
   document.getElementById('errorCard').classList.remove('visible');
   resetSteps();
   animateSteps(45000);
+  const formData = new FormData();
+  formData.append('jobTitle', jobTitle);
+  formData.append('location', location);
+  formData.append('skills', skills);
+  formData.append('resume', resumeTxt);
+  formData.append('maxResults', maxResults);
+  formData.append('experienceLevel', expLevel);
+  if (resumeFileData) formData.append('resumeFile', resumeFileData);
+  const res = await fetch('/api/jobs/analyze', {
+    method: 'POST',
+    body: formData
 
   try {
-    const res = await fetch('/api/jobs/analyze', {
+    
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jobTitle, location, skills, resume: resumeContent, maxResults, sources, experienceLevel: expLevel })
+      
+      
     });
     const data = await res.json();
     clearStepTimers();
