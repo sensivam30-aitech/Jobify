@@ -17,20 +17,21 @@ Analyze these listings against the candidate's profile and return a JSON object 
 {
   "summary": "2-3 sentence overview of the job market for this role",
   "totalFound": number,
-  "topMatches": [
+  "matches": [
     {
       "rank": 1,
       "title": "job title",
       "company": "company name",
       "location": "location",
-      "matchScore": 85,
+      "matchPercentage": 85,
       "matchReason": "why this is a good match",
       "keyGap": "one specific missing skill or requirement",
-      "applyLink": "url or empty string",
+      "url": "url or empty string",
       "salary": "salary range or Not listed"
     }
   ],
   "skillGaps": ["skill1", "skill2"],
+  "matchedSkills": ["skill1", "skill2"],
   "topSkillsInDemand": ["skill1", "skill2"],
   "recommendation": "one actionable sentence for the candidate"
 }`;

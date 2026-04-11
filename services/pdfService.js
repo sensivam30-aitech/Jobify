@@ -46,15 +46,15 @@ function htmlShell(title, bodyContent) {
 }
 
 function jobsTemplate(data) {
-  const rows = (data?.jobs ?? [])
+  const rows = (data?.matches ?? [])
     .map(
       (j) => `
     <tr>
-      <td>${j?.role ?? "—"}</td>
+      <td>${j?.title ?? "—"}</td>
       <td>${j?.company ?? "—"}</td>
-      <td>${j?.matchScore ?? "—"}</td>
+      <td>${j?.matchPercentage ?? "—"}%</td>
       <td>${j?.keyGap ?? "—"}</td>
-      <td>${j?.applyLink ? `<a href="${j.applyLink}" target="_blank">Apply</a>` : "—"}</td>
+      <td>${j?.url ? `<a href="${j.url}" target="_blank">Apply</a>` : "—"}</td>
     </tr>`
     )
     .join("");
@@ -63,7 +63,7 @@ function jobsTemplate(data) {
     "Jobs Report",
     `<h2>Job Matches</h2>
     <table>
-      <thead><tr><th>Role</th><th>Company</th><th>Match Score</th><th>Key Gap</th><th>Apply Link</th></tr></thead>
+      <thead><tr><th>Role</th><th>Company</th><th>Match %</th><th>Key Gap</th><th>Apply Link</th></tr></thead>
       <tbody>${rows || "<tr><td colspan=\"5\">No jobs data</td></tr>"}</tbody>
     </table>`
   );

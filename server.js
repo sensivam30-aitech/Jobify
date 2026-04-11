@@ -27,7 +27,11 @@ app.get("/health", (req, res) => {
 // Serve saved HTML reports (generated to /tmp by pdfService)
 app.get("/report", (req, res) => {
   const reportPath = req.query.path;
-  if (!reportPath || !reportPath.startsWith("/tmp/jobs-")) {
+  if (!reportPath) return res.status(400).send("No path provided");
+  
+  // Normalize both \ and / for cross-platform security check
+  const normalized = reportPath.replace(/\\/g, "/");
+  if (!normalized.startsWith("/tmp/jobs-")) {
     return res.status(400).send("Invalid report path");
   }
   res.sendFile(reportPath);
