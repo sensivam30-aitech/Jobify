@@ -1500,7 +1500,7 @@ function renderResults(data){
 }
 function escHtml(str){if(!str)return'';return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
   var fi = document.getElementById('resumeFile');
   if (fi) fi.addEventListener('change', function(){ handleFileSelect(this); });
   var ab = document.getElementById('analyzeBtn');
@@ -1511,7 +1511,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var cb = document.getElementById('src-' + src);
     if (cb) cb.addEventListener('change', function(){ updateToggle(src); });
   });
-});
+})();
 </script>
 </body>
 </html>
