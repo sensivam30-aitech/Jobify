@@ -1282,17 +1282,17 @@
           <label>Job Sources</label>
           <div class="source-group">
             <label class="source-toggle active" id="toggle-indeed">
-              <input type="checkbox" id="src-indeed" checked onchange="updateToggle('indeed')" />
+              <input type="checkbox" id="src-indeed" checked />
               <div class="source-icon icon-indeed">i</div>
               Indeed
             </label>
             <label class="source-toggle active" id="toggle-linkedin">
-              <input type="checkbox" id="src-linkedin" checked onchange="updateToggle('linkedin')" />
+              <input type="checkbox" id="src-linkedin" checked />
               <div class="source-icon icon-linkedin">in</div>
               LinkedIn
             </label>
             <label class="source-toggle" id="toggle-google">
-              <input type="checkbox" id="src-google" onchange="updateToggle('google')" />
+              <input type="checkbox" id="src-google" />
               <div class="source-icon icon-google">G</div>
               Google Jobs
             </label>
@@ -1305,14 +1305,14 @@
         <div class="form-group full">
           <label>Résumé / Skills Summary</label>
           <div style="margin-bottom:10px;">
-  <input type="file" id="resumeFile" accept=".pdf,.doc,.docx,.txt" onchange="handleFileSelect(this)" style="width:100%;padding:12px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--mono);font-size:13px;cursor:pointer;" />
+  <input type="file" id="resumeFile" accept=".pdf,.doc,.docx,.txt" style="width:100%;padding:12px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--mono);font-size:13px;cursor:pointer;" />
   <div id="uploadFilename" style="margin-top:6px;font-size:12px;color:var(--accent);font-family:var(--mono);display:none;">✓ <span id="uploadedName"></span></div>
 </div>
 <textarea id="resumeText" placeholder="…or paste your skills summary, experience, or résumé text here" style="margin-top:10px;"></textarea>
         </div>
       </div>
 
-      <button class="btn-analyze" id="analyzeBtn" onclick="startAnalysis()">
+      <button class="btn-analyze" id="analyzeBtn">
         ⚡ ANALYZE JOBS
       </button>
     </div>
@@ -1392,7 +1392,7 @@
       </div>
       <div style="display:flex;gap:10px;align-items:center;">
         <a class="btn-download" id="reportLink" href="#" target="_blank">↗ OPEN REPORT</a>
-        <button class="btn-new" onclick="resetForm()">← NEW SEARCH</button>
+        <button class="btn-new">← NEW SEARCH</button>
       </div>
     </div>
   </div>
@@ -1499,6 +1499,19 @@ function renderResults(data){
   document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'});
 }
 function escHtml(str){if(!str)return'';return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var fi = document.getElementById('resumeFile');
+  if (fi) fi.addEventListener('change', function(){ handleFileSelect(this); });
+  var ab = document.getElementById('analyzeBtn');
+  if (ab) ab.addEventListener('click', startAnalysis);
+  var nb = document.querySelector('.btn-new');
+  if (nb) nb.addEventListener('click', resetForm);
+  ['indeed','linkedin','google'].forEach(function(src) {
+    var cb = document.getElementById('src-' + src);
+    if (cb) cb.addEventListener('change', function(){ updateToggle(src); });
+  });
+});
 </script>
 </body>
 </html>
