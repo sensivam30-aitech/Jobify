@@ -9,7 +9,11 @@
 
 ## 📽 Demo Overview
 
-> **Live Platform**: Run locally at `http://localhost:3000` after setup (see below).
+> 🎬 **Watch the full walkthrough of the Jobify platform — from résumé upload to AI-ranked job matches and report generation.**
+
+https://github.com/user-attachments/assets/ADD-YOUR-VIDEO-LINK-HERE
+
+> **Note**: To view the demo, upload `jobifyDemo.mp4` via the GitHub web editor (drag & drop into the README editor) and replace the link above with the generated URL.
 
 ### Application Flow
 
@@ -22,6 +26,7 @@
 | 5️⃣ | Click **↗ OPEN REPORT** | Full HTML report with all insights |
 
 ---
+
 
 Jobify is a high-end automation suite that bridges the gap between raw web data and actionable insights. By orchestrating distributed cloud scrapers via **Apify** and performing deep-reasoning synthesis through **Anthropic’s Claude LLM**, Jobify provides users with professional-grade reports in seconds.
 
