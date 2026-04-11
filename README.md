@@ -9,9 +9,7 @@
 
 ## 📽 Demo Overview
 
-> 🎬 **Watch the full walkthrough of the Jobify platform — from résumé upload to AI-ranked job matches and report generation.*
-
-> **Note**: To view the demo, upload `jobifyDemo.mp4` via the GitHub web editor (drag & drop into the README editor) and replace the link above with the generated URL.
+> **Live Platform**: Run locally at `http://localhost:3000` after setup (see below).
 
 ### Application Flow
 
@@ -24,7 +22,6 @@
 | 5️⃣ | Click **↗ OPEN REPORT** | Full HTML report with all insights |
 
 ---
-
 
 Jobify is a high-end automation suite that bridges the gap between raw web data and actionable insights. By orchestrating distributed cloud scrapers via **Apify** and performing deep-reasoning synthesis through **Anthropic’s Claude LLM**, Jobify provides users with professional-grade reports in seconds.
 
@@ -63,10 +60,11 @@ graph TD
 ## 🌟 Core Intelligence Modules
 
 ### 1. Career Intelligence (Job Matcher)
-*   **Real-Time Scraping**: Pulls live listings directly from Indeed and LinkedIn using headless browser automation.
-*   **AI Ranking**: Claude analyzes your résumé text or PDF against listing requirements to produce a 0-100% match score.
-*   **Gap Analysis**: Identifies exactly which tools or certifications you are missing for specific roles.
-*   **Actionable Recs**: Generates personalized training roadmaps to close skill gaps.
+
+* **Real-Time Scraping**: Pulls live listings directly from Indeed and LinkedIn using headless browser automation.
+* **AI Ranking**: Claude analyzes your résumé text or PDF against listing requirements to produce a 0-100% match score.
+* **Gap Analysis**: Identifies exactly which tools or certifications you are missing for specific roles.
+* **Actionable Recs**: Generates personalized training roadmaps to close skill gaps.
 
 ---
 
@@ -86,25 +84,29 @@ graph TD
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v18.0.0 or higher)
-- [Apify API Token](https://apify.com/)
-- [Anthropic API Key](https://anthropic.com/)
+* [Apify API Token](https://apify.com/)
+* [Anthropic API Key](https://anthropic.com/)
 
 ### Installation
 
 1. **Clone & Navigate**
+
    ```bash
    git clone https://github.com/sensivam30-aitech/Jobify.git
    cd Jobify/Jobify
    ```
 
 2. **Install Dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Configure Environment**
    Create a `.env` file in the `Jobify` directory:
+
    ```env
    PORT=3000
    APIFY_API_TOKEN=your_apify_token_here
@@ -112,9 +114,11 @@ graph TD
    ```
 
 4. **Launch**
+
    ```bash
    npm start
    ```
+
    *The platform will be live at `http://localhost:3000`*
 
 ---
@@ -134,6 +138,7 @@ Jobify/
 ---
 
 ## 📜 License
+
 This project is licensed under the **ISC License**.
 
 ---
