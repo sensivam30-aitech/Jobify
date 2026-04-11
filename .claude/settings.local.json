@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(node --check server.js)",
+      "Bash(node --check services/apifyService.js)",
+      "Bash(node --check services/claudeService.js)",
+      "Bash(node --check services/pdfService.js)",
+      "Bash(node --check services/index.js)",
+      "Bash(node --check scripts/testServices.js)",
+      "Bash(node --check actors/jobActors.js)",
+      "Bash(node --check prompts/jobPrompt.js)",
+      "Bash(node --check routes/jobRoutes.js)",
+      "Bash(node server.js)",
+      "Bash(curl -s -X POST http://localhost:3000/api/jobs/analyze -H 'Content-Type: application/json' -d '{:*)",
+      "Bash(node --check actors/intelActors.js)",
+      "Bash(node --check prompts/intelPrompt.js)",
+      "Bash(node --check routes/intelRoutes.js)",
+      "Bash(pkill -f \"node server.js\")",
+      "Bash(curl -s -X POST http://localhost:3000/api/intel/analyze -H 'Content-Type: application/json' -d '{:*)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :3000)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(echo \"EXIT CODE: $?\")",
+      "Bash(node -e \"require\\('dotenv'\\).config\\(\\); console.log\\('dotenv loaded'\\); setTimeout\\(\\(\\) => console.log\\('still alive'\\), 2000\\)\")",
+      "Bash(kill %1)",
+      "Bash(node -e ':*)",
+      "Bash(curl -s http://localhost:3000/health)",
+      "Bash(kill -0 %1)",
+      "Bash(echo \"---TIMEOUT_EXIT: $?---\")",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(curl -s --max-time 120 -X POST http://localhost:3000/api/intel/analyze -H 'Content-Type: application/json' -d '{\"companyName\": \"Notion\", \"competitorNames\": \"Coda, Confluence\"}')",
+      "Bash(pm2 logs:*)",
+      "Bash(pm2 status:*)"
+    ]
+  }
+}
