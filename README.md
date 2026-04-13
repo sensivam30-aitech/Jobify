@@ -25,9 +25,7 @@ https://JobifyAI.replit.app
 | 5️ | Click **↗ OPEN REPORT** | Full HTML report with all insights |
 
 ---
-
-Jobify is a high-end automation suite that bridges the gap between raw web data and actionable insights. By orchestrating distributed cloud scrapers via **Apify** and performing deep-reasoning synthesis through **Anthropic’s Claude LLM**, Jobify provides users with professional-grade reports in seconds.
-
+𝘑𝘰𝘣𝘪𝘧𝘺 𝘪𝘴 𝘢 𝘩𝘪𝘨𝘩-𝘦𝘯𝘥 𝘢𝘶𝘵𝘰𝘮𝘢𝘵𝘪𝘰𝘯 𝘴𝘶𝘪𝘵𝘦 𝘵𝘩𝘢𝘵 𝘣𝘳𝘪𝘥𝘨𝘦𝘴 𝘵𝘩𝘦 𝘨𝘢𝘱 𝘣𝘦𝘵𝘸𝘦𝘦𝘯 𝘳𝘢𝘸 𝘸𝘦𝘣 𝘥𝘢𝘵𝘢 𝘢𝘯𝘥 𝘢𝘤𝘵𝘪𝘰𝘯𝘢𝘣𝘭𝘦 𝘪𝘯𝘴𝘪𝘨𝘩𝘵𝘴. 𝘉𝘺 𝘰𝘳𝘤𝘩𝘦𝘴𝘵𝘳𝘢𝘵𝘪𝘯𝘨 𝘥𝘪𝘴𝘵𝘳𝘪𝘣𝘶𝘵𝘦𝘥 𝘤𝘭𝘰𝘶𝘥 𝘴𝘤𝘳𝘢𝘱𝘦𝘳𝘴 𝘷𝘪𝘢 𝘈𝘱𝘪𝘧𝘺 𝘢𝘯𝘥 𝘱𝘦𝘳𝘧𝘰𝘳𝘮𝘪𝘯𝘨 𝘥𝘦𝘦𝘱-𝘳𝘦𝘢𝘴𝘰𝘯𝘪𝘯𝘨 𝘴𝘺𝘯𝘵𝘩𝘦𝘴𝘪𝘴 𝘵𝘩𝘳𝘰𝘶𝘨𝘩 𝘈𝘯𝘵𝘩𝘳𝘰𝘱𝘪𝘤’𝘴 𝘊𝘭𝘢𝘶𝘥𝘦 𝘓𝘓𝘔, 𝘑𝘰𝘣𝘪𝘧𝘺 𝘱𝘳𝘰𝘷𝘪𝘥𝘦𝘴 𝘶𝘴𝘦𝘳𝘴 𝘸𝘪𝘵𝘩 𝘱𝘳𝘰𝘧𝘦𝘴𝘴𝘪𝘰𝘯𝘢𝘭-𝘨𝘳𝘢𝘥𝘦 𝘳𝘦𝘱𝘰𝘳𝘵𝘴 𝘪𝘯 𝘴𝘦𝘤𝘰𝘯𝘥𝘴.
 ---
 
 ##  System Architecture
