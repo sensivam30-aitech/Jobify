@@ -1,7 +1,7 @@
 Access your live here -->You can only access live functionality through APIs. To enable it, clone the required service and configure it by adding the necessary API keys in your environment variables.  
 https://JobifyAI.replit.app
 
-# Jobify & ReWire Intelligence Suite 🚀
+# Jobify & ReWire Intelligence Suite 
 
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Anthropic Claude](https://img.shields.io/badge/AI-Claude%203.5%20Sonnet-7B61FF?logo=anthropic&logoColor=white)](https://www.anthropic.com/)
@@ -10,7 +10,7 @@ https://JobifyAI.replit.app
 
 > **The next-generation intelligence platform for Career matching, Market research, and Strategic planning.**
 
-## 📽 Demo Overview
+##  Demo Overview
 
 > **Live Platform**: Run locally at `http://localhost:3000` after setup (see below).
 
@@ -18,11 +18,11 @@ https://JobifyAI.replit.app
 
 | Step | Action | Result |
 |:---:|:---|:---|
-| 1️⃣ | Upload or paste your résumé | AI parses your skills & experience |
-| 2️⃣ | Set job title, location, sources | Apify scrapes Indeed & LinkedIn live |
-| 3️⃣ | Click **⚡ ANALYZE JOBS** | Claude AI ranks every match 0–100% |
-| 4️⃣ | View ranked results table | Skill gaps, matched skills, salary ranges |
-| 5️⃣ | Click **↗ OPEN REPORT** | Full HTML report with all insights |
+| 1️ | Upload or paste your résumé | AI parses your skills & experience |
+| 2️ | Set job title, location, sources | Apify scrapes Indeed & LinkedIn live |
+| 3️ | Click ** ANALYZE JOBS** | Claude AI ranks every match 0–100% |
+| 4️ | View ranked results table | Skill gaps, matched skills, salary ranges |
+| 5️ | Click **↗ OPEN REPORT** | Full HTML report with all insights |
 
 ---
 
@@ -30,7 +30,7 @@ Jobify is a high-end automation suite that bridges the gap between raw web data 
 
 ---
 
-## 🏗 System Architecture
+##  System Architecture
 
 The platform is designed with a service-oriented architecture, ensuring clear separation of concerns between data acquisition, tactical processing, and visual presentation.
 
@@ -60,7 +60,7 @@ graph TD
 
 ---
 
-## 🌟 Core Intelligence Modules
+##  Core Intelligence Modules
 
 ### 1. Career Intelligence (Job Matcher)
 
@@ -71,7 +71,7 @@ graph TD
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 | :--- | :--- |
@@ -84,7 +84,7 @@ graph TD
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -126,7 +126,7 @@ graph TD
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```text
 Jobify/
@@ -140,10 +140,10 @@ Jobify/
 
 ---
 
-## 📜 License
+##  License
 
 This project is licensed under the **ISC License**.
 
 ---
 
-Developed with ❤️ by the Jobify Team.
+Developed  by the Jobify Team.
