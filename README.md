@@ -1,4 +1,5 @@
-Access your live here --> https://JobifyAI.replit.app
+Access your live here -->You can only access live functionality through APIs. To enable it, clone the required service and configure it by adding the necessary API keys in your environment variables.  
+https://JobifyAI.replit.app
 
 # Jobify & ReWire Intelligence Suite 🚀
 
